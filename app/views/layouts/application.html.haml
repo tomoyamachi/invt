@@ -1,0 +1,29 @@
+!!! XML
+!!!
+%html{"xmlns" => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8'}
+    %meta{ 'property' => 'og:site_name', :content => 'invt' }
+    %meta{ 'name' => 'description', :content => 'INVT' }
+    %title Life
+    = stylesheet_link_tag :all, :media => 'screen,projection'
+    = javascript_include_tag :all
+    %link{ :rel => 'shortcut icon', :media => 'image/x-icon', :href => '/images/life.ico' }
+  %body.container_12
+    .header
+      .admin
+      %h1
+        %a= link_to 'simpleplay\'s Lifelog','/'
+      .cl
+    .body-wrapper
+      .contents= yield
+    .footer
+      = link_to "INVTについて"
+      \/
+      = link_to "使い方"
+      \/
+      = link_to "個人情報について"
+      \/
+      = link_to "開発者について"
+      \/
+      = link_to "ログアウト"

@@ -1,0 +1,6 @@
+$('#add-wish-part<%= params[:wish_part_num] %>').html(
+  "<%= escape_javascript(render 'wish_date',{:ident_num => params[:wish_part_num]}) %>"
+)
+$('#add-wish-button<%= params[:wish_part_num] %>').html(
+  "<%= escape_javascript(render 'add_wish_part',{:wish_part_num => params[:wish_part_num]}) %>"
+)

@@ -1,0 +1,43 @@
+%ul.breadcrumb
+  %li.current
+    %a 基本情報
+  %li
+    %a 詳細情報
+  %li
+    %a 参加者を選ぶ
+  %li
+    %a 参加者へ知らせる
+  %li
+    %a 完了!!
+.field
+  %h2 いつにする??
+  .grid_3.center
+    = image_tag "/images/today.png"
+    .cl
+    = radio_button_tag 'date', 'today'
+    今日
+    = radio_button_tag 'date', 'tomorrow'
+    明日
+  .grid_3.center
+    = image_tag "/images/weekend.png"
+    .cl
+    = radio_button_tag 'date', 'today'
+    金曜/15日
+    = radio_button_tag 'date', 'tomorrow'
+    土曜/16日
+  .grid_3.center
+    = image_tag "/images/unknown.png"
+    .cl
+    = radio_button_tag 'date', 'tomorrow'
+    未定(みんなの意見を聞く)
+  .cl
+.hr
+.field
+  %h2 どんな感じ??
+  - IVNT_TYPE.each do |c|
+    .grid_3.check
+      = radio_button_tag 'type', c
+      = c
+  .cl
+%a.button.button-blue
+  %span 次のステップへ

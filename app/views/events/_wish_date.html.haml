@@ -1,0 +1,18 @@
+%div{:id => "calendar-wrap#{ident_num}"}
+  .date-plan
+    希望日
+    = ident_num
+    = render "calendar",{:ident_num => ident_num}
+    .date-detail
+      - if params[:date]
+        %p
+          希望日
+          = params[:year] + "/" + params[:month] + "/" + params[:date]
+          = link_to "×",{:action => "wish_date_ajax",:ident_num => ident_num},:remote => true
+      %p
+        時間
+        = text_field_tag :start_time, "19:00"
+      %p
+        ランク
+        = select_tag 'condition_m', options_for_select([["この日だと嬉しい",1],["この日でも大丈夫",2],["できれば避けたい",3]])
+    .cl

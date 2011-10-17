@@ -1,0 +1,3 @@
+$('#calendar<%= params[:ident_num] %>').html(
+  "<%= escape_javascript(render 'calendar',{:ident_num => params[:ident_num]}) %>"
+)
