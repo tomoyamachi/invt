@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.text :note
       t.datetime :dead_line
       t.integer :open_flag
+      t.integer :user_id
 
       t.timestamps
     end

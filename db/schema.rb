@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014092230) do
+ActiveRecord::Schema.define(:version => 20111019023918) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -18,8 +18,21 @@ ActiveRecord::Schema.define(:version => 20111014092230) do
     t.text     "note"
     t.datetime "dead_line"
     t.integer  "open_flag"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "facebook_token"
+    t.string   "name"
+    t.string   "email"
+    t.string   "image_url"
+    t.integer  "first_event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

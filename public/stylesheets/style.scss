@@ -249,3 +249,8 @@ cursor: default;
 .breadcrumb li:last-child a:after { border-left-color: $finish-color;}
 .breadcrumb li a:hover { background: $finish-color; }
 .breadcrumb li a:hover:after { border-left-color: $finish-color !important; }
+
+  .friends-list{position:relative;width:90px;height:100px;float:left;font-size: 8px;border: 1px $section-bgcolor solid;text-align: center;}
+  .friend-img{height:50px;width:50px;
+   position:absolute;
+   margin: 20px 20px 0 20px;}

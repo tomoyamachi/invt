@@ -1,17 +1,22 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+# t.integer :id, :null => false
+# t.string :facebook_token
+# t.string :name
+# t.string :email
+# t.string :image_url
+# t.integer :first_event_id
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-  data = access_token['extra']['user_hash']
-  if user = User.find_by_email(data["email"])
-    user
-  else # Create a user with a stub password.
-    User.create(:email => data["email"], :password => Devise.friendly_token[0,20])
+  def self.find_or_create_from_auth_hash(authhash)
+    user = User.find_by_id(authhash["uid"].to_i)
+    unless user
+      user = User.new
+      user.id = authhash["uid"].to_i
+      user_info = authhash["user_info"]
+      user.name = user_info["name"]
+      user.email = user_info["email"]
+      user.image_url = user_info["image"]
+      user.save
+    end
+    return user
   end
-end
 end

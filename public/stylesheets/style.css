@@ -343,3 +343,18 @@ button {
 
 .breadcrumb li a:hover:after {
   border-left-color: #e04f35 !important; }
+
+.friends-list {
+  position: relative;
+  width: 90px;
+  height: 100px;
+  float: left;
+  font-size: 8px;
+  border: 1px #d4e4f1 solid;
+  text-align: center; }
+
+.friend-img {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  margin: 20px 20px 0 20px; }
