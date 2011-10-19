@@ -126,10 +126,22 @@ button {
 .date-plan {
   float: left;
   padding: 5px 10px;
-  background: #d4e4f1; }
+  background: #d4e4f1;
+  width: 180px;
+  height: 240px; }
 
 .date-detail input {
-  width: 48px; }
+  width: 48px;
+  height: 13px; }
+
+.plus-circle {
+  height: 128px;
+  width: 128px;
+  position: absolute;
+  margin-top: 64px;
+  margin-left: 32px; }
+  .plus-circle a {
+    text-decoration: none; }
 
 .calendar-header {
   font-size: 12px;
@@ -191,6 +203,14 @@ button {
 
 .sat {
   color: #2B6DBC; }
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: red;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px; }
 
 /* send button */
 .button {

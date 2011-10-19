@@ -10,7 +10,7 @@ gem 'haml-rails'
 gem 'sass'
 gem 'rspec-rails'
 gem 'jquery-rails', '>= 1.0.12'
-
+gem 'oa-oauth'
 # Use unicorn as the web server
 # gem 'unicorn'
 

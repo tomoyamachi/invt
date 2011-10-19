@@ -11,35 +11,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+display: block;
 }
 body {
-	line-height: 1;
+line-height: 1;
 }
 ol, ul {
-	list-style: none;
+list-style: none;
 }
 blockquote, q {
-	quotes: none;
+quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+content: '';
+content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+border-collapse: collapse;
+border-spacing: 0;
 }
   /* util */
   .hr{padding: 10px 0;border-bottom:1px dashed #aaaaaa;margin-bottom:15px}
@@ -52,12 +52,12 @@ $bgc: #F2F1E8;
 $section-color: #3993B8;
 $section-bgcolor: #D4E4F1;
     body { background-color: $bgc; color: #333;margin:0;padding:0;
-	    font-family: Meiryo, "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", verdana,arial, "lucida grande", sans-serif;}
-	a{color:#3b5998;outline:none;}
+font-family: Meiryo, "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", verdana,arial, "lucida grande", sans-serif;}
+a{color:#3b5998;outline:none;}
     h1{font-size: 20px;}
-	form{padding:0;margin:0;}
-	button{cursor:pointer;}
-	.contents {text-align:left;font-size:14px;padding:20px 0 20px 10px;
+form{padding:0;margin:0;}
+button{cursor:pointer;}
+.contents {text-align:left;font-size:14px;padding:20px 0 20px 10px;
     &:after{visibility:hidden;display:block;font-size:0;content:"";height:0;clear:both;}
     }
   .header { padding: 10px 0;
@@ -67,7 +67,7 @@ $section-bgcolor: #D4E4F1;
              }
            }
 
-	.footer {
+.footer {
       color: #777777;
       margin: 0 auto;
       position: relative;
@@ -80,16 +80,17 @@ $section-bgcolor: #D4E4F1;
     background-color: white;
       box-shadow: 0 0 2px #000000;
       clear: both;
-        /* border: 1px black solid;*/
-      font-size: 12px;
-      position: relative;
-      width: 100%;
-    h1{font-size:12px;font-weight: normal;}
-    h2{font-size: 20px;font-weight: bold;padding: 10px 0;}
-    }
+        /* border: 1px black solid;*/ font-size: 12px; position:
+      relative; width: 100%; h1{font-size:12px;font-weight: normal;}
+      h2{font-size: 20px;font-weight: bold;padding: 10px 0;} }
+      .date-plan{float: left;padding: 5px 10px;background:
+      $section-bgcolor;width:180px;height:240px;}
+      .date-detail{input{width:48px;height:13px;}}
+      .plus-circle{height:128px;width:128px;
+      position:absolute;
+      margin-top:64px;margin-left:32px;
+      a{text-decoration:none;}}
 
-  .date-plan{float: left;padding: 5px 10px;background: $section-bgcolor;}
-  .date-detail{input{width:48px;}}
   $selected-color: #f35df3;
   $disable-color: #999999;
   $calendar-text-color: #333333;
@@ -119,7 +120,7 @@ $section-bgcolor: #D4E4F1;
   .sun{color:#ff0000;}
   .sat{color:#2B6DBC;}
 
-
+  .circle { width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; }
 
    /* send button */
    .button{
@@ -174,13 +175,13 @@ $section-bgcolor: #D4E4F1;
     background: #4477a1;
     background: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
     background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
 }
 .button-blue:hover{
     background: #81a8cb;
     background: -webkit-gradient(linear, left top, left bottom, from(#4477a1), to(#81a8cb) );
     background: -moz-linear-gradient(-90deg, #4477a1, #81a8cb);
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4477a1', endColorstr='#81a8cb');
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4477a1', endColorstr='#81a8cb');
 }
 .button-blue:active{
     background: #4477a1;
@@ -188,63 +189,63 @@ $section-bgcolor: #D4E4F1;
 
 /*bread crumb*/
 .breadcrumb {
-			list-style: none;
-			overflow: hidden;
-			font: 18px Helvetica, Arial, Sans-Serif;
-		}
-		.breadcrumb li {
-			float: left;
-		}
-		.breadcrumb li a {
-			color: white;
-			text-decoration: none;
-			padding: 10px 0 10px 55px;
+list-style: none;
+overflow: hidden;
+font: 18px Helvetica, Arial, Sans-Serif;
+}
+.breadcrumb li {
+float: left;
+}
+.breadcrumb li a {
+color: white;
+text-decoration: none;
+padding: 10px 0 10px 55px;
       background: $section-bgcolor;
-			position: relative;
-			display: block;
-			float: left;
-		}
-		.breadcrumb li a:after {
-			content: " ";
-			display: block;
-			width: 0;
-			height: 0;
-			border-top: 50px solid transparent;
-			border-bottom: 50px solid transparent;
-			border-left: 30px solid $section-bgcolor;
-			position: absolute;
-			top: 50%;
-			margin-top: -50px;
-			left: 100%;
-			z-index: 2;
-		}
-		.breadcrumb li a:before {
-			content: " ";
-			display: block;
-			width: 0;
-			height: 0;
-			border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
-			border-bottom: 50px solid transparent;
-			border-left: 30px solid white;
-			position: absolute;
-			top: 50%;
-			margin-top: -50px;
-			margin-left: 1px;
-			left: 100%;
-			z-index: 1;
-		}
-		.breadcrumb li:first-child a {
-			padding-left: 10px;
-		}
+position: relative;
+display: block;
+float: left;
+}
+.breadcrumb li a:after {
+content: " ";
+display: block;
+width: 0;
+height: 0;
+border-top: 50px solid transparent;
+border-bottom: 50px solid transparent;
+border-left: 30px solid $section-bgcolor;
+position: absolute;
+top: 50%;
+margin-top: -50px;
+left: 100%;
+z-index: 2;
+}
+.breadcrumb li a:before {
+content: " ";
+display: block;
+width: 0;
+height: 0;
+border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+border-bottom: 50px solid transparent;
+border-left: 30px solid white;
+position: absolute;
+top: 50%;
+margin-top: -50px;
+margin-left: 1px;
+left: 100%;
+z-index: 1;
+}
+.breadcrumb li:first-child a {
+padding-left: 10px;
+}
     .breadcrumb li.current a {background: $section-color;}
     .breadcrumb li.current a:after {border-left-color: $section-color;}
     $finish-color: #E04F35;
-		.breadcrumb li:last-child a {
-			background: $finish-color !important;
-			color: black;
-			pointer-events: none;
-			cursor: default;
-		}
-		.breadcrumb li:last-child a:after { border-left-color: $finish-color;}
-		.breadcrumb li a:hover { background: $finish-color; }
-		.breadcrumb li a:hover:after { border-left-color: $finish-color !important; }
+.breadcrumb li:last-child a {
+background: $finish-color !important;
+color: black;
+pointer-events: none;
+cursor: default;
+}
+.breadcrumb li:last-child a:after { border-left-color: $finish-color;}
+.breadcrumb li a:hover { background: $finish-color; }
+.breadcrumb li a:hover:after { border-left-color: $finish-color !important; }
