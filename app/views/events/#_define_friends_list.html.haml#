@@ -1,0 +1,7 @@
+.friends-list.defined
+  .friend-img
+    = image_tag("http://graph.facebook.com/" + @friend_id + "/picture")
+    .cl
+    = @name
+    = hidden_field_tag "id#{@defined_num}", @friend_id
+    = hidden_field_tag "name#{@defined_num}", @name

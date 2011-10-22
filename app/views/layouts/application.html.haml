@@ -11,16 +11,16 @@
     %link{ :rel => 'shortcut icon', :media => 'image/x-icon', :href => '/images/life.ico' }
   %body.container_12
     .header
-      .admin
-      %h1
-        %a= link_to 'simpleplay\'s Lifelog','/'
+      .logo.grid_3
+        %h1= link_to 'INVT','/'
+      .desc.grid_4
+        予定合わせ支援サービス:INVT(インバイト)
+      .signin
+        - unless @user
+          = link_to image_tag("login.jpg"), "/auth/facebook"
+
       .cl
     .body-wrapper
-      - if @current_user
-        = "Welcome, #{current_user.name} !"
-        = link_to "Sign Out", signout_path
-      - else
-        = link_to "Sign in with facebook", "/auth/facebook"
       .contents= yield
     .footer
       = link_to "INVTについて"

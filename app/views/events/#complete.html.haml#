@@ -1,1 +1,3 @@
+
+
 = link_to "test","http://www.facebook.com/dialog/send?app_id=170649486355496&name=People%20Argue%20Just%20to%20Win&link=http://www.invt.biz/2tml&redirect_uri=http://localhost:3000/detail&to=1383097228,527014793",:target =>"_blank"

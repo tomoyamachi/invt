@@ -72,32 +72,24 @@ form {
 button {
   cursor: pointer; }
 
-.contents {
-  text-align: left;
-  font-size: 14px;
-  padding: 20px 0 20px 10px; }
-  .contents:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: "";
-    height: 0;
-    clear: both; }
-
 .header {
-  padding: 10px 0; }
+  padding: 25px 30px 25px 0; }
+  .header h1 {
+    font-size: 20px; }
   .header a {
     text-decoration: none;
-    color: white; }
+    color: #333333; }
     .header a:hover {
-      color: white;
-      background: #FD0CB6; }
+      color: #333333;
+      background: #f2f1e8; }
 
-.footer {
-  color: #777777;
-  margin: 0 auto;
-  position: relative;
-  padding: 10px 0px 30px 0px; }
+.desc {
+  font-size: 12px;
+  border-left: 1px black solid;
+  padding-left: 30px; }
+
+.signin {
+  float: right; }
 
 .center {
   text-align: center;
@@ -107,12 +99,13 @@ button {
 .check {
   padding: 5px 0; }
 
+.right {
+  float: right; }
+
 .body-wrapper {
   background-color: white;
   box-shadow: 0 0 2px #000000;
   clear: both;
-  /* border: 1px black solid;*/
-  font-size: 12px;
   position: relative;
   width: 100%; }
   .body-wrapper h1 {
@@ -122,6 +115,23 @@ button {
     font-size: 20px;
     font-weight: bold;
     padding: 10px 0; }
+
+.contents {
+  font-size: 14px;
+  padding: 20px; }
+  .contents:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: "";
+    height: 0;
+    clear: both; }
+
+.footer {
+  color: #777777;
+  margin: 0 auto;
+  position: relative;
+  padding: 10px 0px 30px 0px; }
 
 .date-plan {
   float: left;
@@ -247,6 +257,7 @@ button {
   -webkit-background-size: 3px 3px; }
 
 .button:hover {
+  cursor: pointer;
   box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.4); }
@@ -349,7 +360,7 @@ button {
   width: 90px;
   height: 100px;
   float: left;
-  font-size: 8px;
+  font-size: 10px;
   border: 1px #d4e4f1 solid;
   text-align: center; }
 
@@ -358,3 +369,22 @@ button {
   width: 50px;
   position: absolute;
   margin: 20px 20px 0 20px; }
+
+.defined {
+  background: #d4e4f1; }
+
+.submit-forms {
+  width: 100%;
+  padding: 0px; }
+
+.next {
+  float: right; }
+  .next img {
+    vertical-align: middle; }
+
+.prev {
+  float: left; }
+
+.send {
+  padding: 30px;
+  float: right; }

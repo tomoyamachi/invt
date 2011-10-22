@@ -2,4 +2,7 @@
 - add_part_num = wish_part_num.to_i + 1
 %div{:id => "add-wish-part#{add_part_num}"}
 %div{:id => "add-wish-button#{add_part_num}"}
-   link_to "add part",{:action => "add_wish_part_ajax",:wish_part_num => add_part_num},:remote => true
+  .date-plan
+    .plus-circle
+      = link_to image_tag("/images/green-plus.png"),{:action => "add_wish_part_ajax",:wish_part_num => add_part_num},:remote => true
+

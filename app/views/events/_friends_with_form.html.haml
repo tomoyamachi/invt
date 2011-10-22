@@ -1,0 +1,34 @@
+- form_tag(url_for(:action => "get_friends_ajax"),:remote => true) do
+  - i = 0
+  - @friends.each do |name,id_s,checked|
+    - break if i == FRIENDS_PER_PAGE;i += 1
+    %div{:id => "friend#{i}"}
+      - if checked
+        .friends-list.defined
+          .friend-img
+            = image_tag("http://graph.facebook.com/" + id_s + "/picture")
+            .cl
+            = name
+      - else
+        .friends-list
+          .friend-img
+            = link_to image_tag("http://graph.facebook.com/" + id_s + "/picture"),{:action => "add_friend_list_ajax",:id => id_s, :name => name, :defined_num => i},:remote => true
+            .cl
+            = link_to name,{:action => "add_friend_list_ajax",:id => id_s,:name => name, :defined_num => i},:remote => true
+  .cl
+  .submit-fomrs
+    = hidden_field_tag "current_page",@current_friend_page
+    = hidden_field_tag "defined_user_ids", @defined_user_ids.to_s
+    = hidden_field_tag "defined_user_infos", @defined_user_infos.to_s
+
+
+    - if @current_friend_page > 0
+      .prev
+        = image_submit_tag("left_dark.png",:name => "prev")
+    .next
+      = image_submit_tag("right_dark.png",:name => "next", :value => "next")
+    .cl
+
+    .send
+      %a.button.button-blue{:onclick => "formSubmit()"}
+        %span submit_me

@@ -6,8 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.text :note
       t.datetime :dead_line
       t.integer :open_flag
-      t.integer :user_id
-
+      t.integer :host_user_id, :limit => 8
       t.timestamps
     end
   end

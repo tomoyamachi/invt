@@ -51,91 +51,92 @@ $pink: #FD0CB6;
 $bgc: #F2F1E8;
 $section-color: #3993B8;
 $section-bgcolor: #D4E4F1;
-    body { background-color: $bgc; color: #333;margin:0;padding:0;
-font-family: Meiryo, "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", verdana,arial, "lucida grande", sans-serif;}
-a{color:#3b5998;outline:none;}
+    body { background-color: $bgc; color: #333;margin:0;padding:0;font-family: Meiryo, "メイリオ", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", verdana,arial, "lucida grande", sans-serif;}
+    a{color:#3b5998;outline:none;}
     h1{font-size: 20px;}
 form{padding:0;margin:0;}
 button{cursor:pointer;}
-.contents {text-align:left;font-size:14px;padding:20px 0 20px 10px;
-    &:after{visibility:hidden;display:block;font-size:0;content:"";height:0;clear:both;}
-    }
-  .header { padding: 10px 0;
 
-             a{text-decoration: none;color:white;
-               &:hover{color:white;background: #FD0CB6;}
-             }
-           }
+  .header { padding: 25px 30px 25px 0;
+             h1{font-size: 20px;}
+             a{text-decoration: none;color:#333333;
+               &:hover{color:#333333;background: $bgc;}}
+                 }
+  .desc{font-size: 12px;border-left: 1px black solid;padding-left:30px;}
+  .signin{float: right;}
+  .center {text-align:center;padding: 5px 10px 5px 10px;box-shadow: 0 0 2px #666666;}
 
-.footer {
-      color: #777777;
+    .check {padding:5px 0;}
+    .right{float: right;}
+    .body-wrapper {background-color: white;box-shadow: 0 0 2px #000000;
+    clear: both;position: relative; width: 100%; h1{font-size:12px;font-weight: normal;}
+    h2{font-size: 20px;font-weight: bold;padding: 10px 0;} }
+
+    .contents {font-size:14px;padding:20px;
+      &:after{visibility:hidden;display:block;font-size:0;content:"";height:0;clear:both;}}
+
+    .footer {color: #777777;
       margin: 0 auto;
       position: relative;
-      padding: 10px 0px 30px 0px;
-    }
+      padding: 10px 0px 30px 0px;}
 
-  .center {text-align:center;padding: 5px 10px 5px 10px;box-shadow: 0 0 2px #666666;}
-  .check {padding:5px 0;}
-  .body-wrapper {
-    background-color: white;
-      box-shadow: 0 0 2px #000000;
-      clear: both;
-        /* border: 1px black solid;*/ font-size: 12px; position:
-      relative; width: 100%; h1{font-size:12px;font-weight: normal;}
-      h2{font-size: 20px;font-weight: bold;padding: 10px 0;} }
-      .date-plan{float: left;padding: 5px 10px;background:
-      $section-bgcolor;width:180px;height:240px;}
-      .date-detail{input{width:48px;height:13px;}}
-      .plus-circle{height:128px;width:128px;
-      position:absolute;
-      margin-top:64px;margin-left:32px;
-      a{text-decoration:none;}}
+    .date-plan{float: left;padding: 5px 10px;background:
+    $section-bgcolor;width:180px;height:240px;}
 
-  $selected-color: #f35df3;
-  $disable-color: #999999;
-  $calendar-text-color: #333333;
-  $calendar-padding: 0 3px 0px 0;
-  $calendar-width: 180px;
-  $calendar-height: 140px;
-  $date-width: 15px;
-  $date-height: 10px;
+    .date-detail{input{width:48px;height:13px;}}
+
+    .plus-circle{height:128px;width:128px;
+    position:absolute;
+    margin-top:64px;margin-left:32px;
+    a{text-decoration:none;}}
+
+$selected-color: #f35df3;
+$disable-color: #999999;
+$calendar-text-color: #333333;
+$calendar-padding: 0 3px 0px 0;
+$calendar-width: 180px;
+$calendar-height: 140px;
+$date-width: 15px;
+$date-height: 10px;
+
   .calendar-header{font-size: 12px;padding: 5px 0px 5px 30px;}
+
   .calendar{width:$calendar-width;height:$calendar-height;
-              ul{width:$calendar-width;list-style:none;font-family:georgia;font-size:9px;display:block;
-              .day{display:block;font-variant:small-caps;font-size:12px;background:#cccccc;height:10px;font-family:helvetica,arial;text-align:center;color:ff0000;}
-              .selected{background-color:#ffff00;
-                &:hover{background-color:#ff0000;}
-                a{color: $calendar-text-color;text-decoration:none;display:block;padding: $calendar-padding;}}
-              .selectable-date{
-                &:hover{background-color:#ff0000;}
-                a{color: $calendar-text-color;text-decoration:none;display:block;}
-                a:hover{color:black;background-color:red;}}
-              .past-date{background: $disable-color;}
+            ul{width:$calendar-width;list-style:none;font-family:georgia;font-size:9px;display:block;
+            .day{display:block;font-variant:small-caps;font-size:12px;background:#cccccc;height:10px;font-family:helvetica,arial;text-align:center;color:ff0000;}
+            .selected{background-color:#ffff00;
+              &:hover{background-color:#ff0000;}
+              a{color: $calendar-text-color;text-decoration:none;display:block;padding: $calendar-padding;}}
+            .selectable-date{
+              &:hover{background-color:#ff0000;}
+              a{color: $calendar-text-color;text-decoration:none;display:block;}
+              a:hover{color:black;background-color:red;}}
+            .past-date{background: $disable-color;}
 
-              li{width: $date-width;float:left;height:$date-height;background:#cccccc;margin:2px;padding:3px;font-family:georgia;
-              span{font-size:11px;dispay:block;color:#666;}
-              }}
-  }
+            li{width: $date-width;float:left;height:$date-height;background:#cccccc;margin:2px;padding:3px;font-family:georgia;
+            span{font-size:11px;dispay:block;color:#666;}
+            }}
+}
 
-  .sun{color:#ff0000;}
-  .sat{color:#2B6DBC;}
+.sun{color:#ff0000;}
+.sat{color:#2B6DBC;}
 
-  .circle { width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; }
+.circle { width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; }
 
-   /* send button */
-   .button{
-    margin: 10px;
-    text-decoration: none;
-    font: bold 1.5em 'Trebuchet MS',Arial, Helvetica; /*Change the em value to scale the button*/
-    display: inline-block;
-    text-align: center;
-    color: #fff;
-    border: 1px solid #9c9c9c; /* Fallback style */
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
-    box-shadow: 0 0 .05em rgba(0,0,0,0.4);
-    -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
-    -webkit-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+ /* send button */
+ .button{
+  margin: 10px;
+  text-decoration: none;
+  font: bold 1.5em 'Trebuchet MS',Arial, Helvetica; /*Change the em value to scale the button*/
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #9c9c9c; /* Fallback style */
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
 }
 .button, .button span{
     -moz-border-radius: .3em;
@@ -160,6 +161,7 @@ button{cursor:pointer;}
     -webkit-background-size: 3px 3px;
 }
 .button:hover{
+  cursor:pointer;
     box-shadow: 0 0 .1em rgba(0,0,0,0.4);
     -moz-box-shadow: 0 0 .1em rgba(0,0,0,0.4);
     -webkit-box-shadow: 0 0 .1em rgba(0,0,0,0.4);
@@ -250,7 +252,14 @@ cursor: default;
 .breadcrumb li a:hover { background: $finish-color; }
 .breadcrumb li a:hover:after { border-left-color: $finish-color !important; }
 
-  .friends-list{position:relative;width:90px;height:100px;float:left;font-size: 8px;border: 1px $section-bgcolor solid;text-align: center;}
+  .friends-list{position:relative;width:90px;height:100px;float:left;font-size: 10px;border: 1px $section-bgcolor solid;text-align: center;
+    &:hover{}}
   .friend-img{height:50px;width:50px;
    position:absolute;
    margin: 20px 20px 0 20px;}
+  .defined{background: $section-bgcolor;}
+  .submit-forms{width:100%;padding: 0px;}
+  .next{float:right;
+    img{vertical-align: middle;}}
+  .prev{float:left;}
+  .send{padding: 30px;float: right;}
