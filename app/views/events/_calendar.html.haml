@@ -8,12 +8,15 @@
   - @max_day = (Date.new(@t.next_month.year, @t.next_month.month, 1) - 1).day
 %div{:id => "calendar#{ident_num}"}
   .calendar-header
-    - unless @this_month_flag
-      = link_to "<<", {:action => "calendar_ajax", :month=>@t.prev_month.month, :year=>@t.prev_month.year, :ident_num => ident_num}, :remote => true
+    - if params[:date]
+      = @t.year.to_s + "/" + @t.month.to_s
     - else
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    = @t.year.to_s + "/" + @t.month.to_s
-    = link_to ">>", {:action => "calendar_ajax", :month=>@t.next_month.month, :year=>@t.next_month.year,:ident_num => ident_num}, :remote => true
+      - unless @this_month_flag
+        = link_to "<<", {:action => "calendar_ajax", :month=>@t.prev_month.month, :year=>@t.prev_month.year, :ident_num => ident_num}, :remote => true
+      - else
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      = @t.year.to_s + "/" + @t.month.to_s
+      = link_to ">>", {:action => "calendar_ajax", :month=>@t.next_month.month, :year=>@t.next_month.year,:ident_num => ident_num}, :remote => true
   .calendar
     %ul
       %li.day.sun 日

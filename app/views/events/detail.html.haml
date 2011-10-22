@@ -1,26 +1,34 @@
 %ul.breadcrumb
-  %li
-    %a 基本情報
   %li.current
-    %a 詳細情報
+    %a タイトル/日程を決める
   %li
     %a 参加者を選ぶ
   %li
     %a 参加者へ知らせる
   %li
-    %a 完了!!
-.grid_6
+    %a 完了!! あとは待つだけ!!
+.grid_3
   %h2 イベントタイトル
   = text_field_tag :title, "title"
   %h2 詳細/その他
   = text_area_tag :note
+.grid_8{:style => "border-left:1px dashed #aaaaaa;margin:10px 0 0 20px;padding:0 0 0 20px;"}
+  %h2 どんな感じ??
+  - IVNT_TYPE.each do |c|
+    .grid_3.check
+      = radio_button_tag 'type', c
+      = c
 .cl
 .hr
 %h2 日時の詳細を入れる
+#add-wish-part
+  = render "wish_date",{:ident_num => "1"}
+  = render "wish_date",{:ident_num => "2"}
+#add-wish-button
+  .date-plan
+    .plus-circle
+      = link_to image_tag("/images/green-plus.png"),{:action => "add_wish_part_ajax",:wish_part_num => 3},:remote => true
 
-= render "wish_date",{:ident_num => "1"}
-= render "wish_date",{:ident_num => "2"}
-= render "add_wish_part"
 .cl
 %a.button.button-blue
   %span 次のステップへ

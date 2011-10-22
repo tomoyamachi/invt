@@ -5,10 +5,7 @@
     = render "calendar",{:ident_num => ident_num}
     .date-detail
       - if params[:date]
-        %p
-          希望日
-          = params[:year] + "/" + params[:month] + "/" + params[:date]
-          = link_to "×",{:action => "wish_date_ajax",:ident_num => ident_num},:remote => true
+        = hidden_field_tag "wish_date#{ident_num}", params[:year] + "/" + params[:month] + "/" + params[:date]
       %p
         時間
         = text_field_tag :start_time, "19:00"

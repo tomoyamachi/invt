@@ -1,3 +1,7 @@
 $('#calendar<%= params[:ident_num] %>').html(
   "<%= escape_javascript(render 'calendar',{:ident_num => params[:ident_num]}) %>"
 )
+$("#calendar<%= params[:ident_num] %>").bind("ajax:loading", function(et, e){
+  "<%= escape_javascript("test") %>"
+
+});
