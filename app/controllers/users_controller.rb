@@ -1,10 +1,14 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   def index
     if @user
-      @events = @user.find_own_events(10)
+      @events = User.find_own_events(@user.id,10)
     else
-      render "events/_form"
+      render "events/detail"
     end
+  end
+  def show_invited
+    UserEvent.find_events_from_user_id(@user.id)
   end
 end
 

@@ -1,0 +1,17 @@
+- if @vote == "reset"
+  = image_tag "yes.png"
+  = link_to "出席",{:action => "voting_ajax", :ident_num => @i, :vote => "yes"},:remote => true
+  %br
+  = image_tag "no.png"
+  = link_to "欠席",{:action => "voting_ajax", :ident_num => @i, :vote => "no"},:remote => true
+- else
+  - if @vote == "yes"
+    = image_tag "yes.png"
+    出席
+    = hidden_field_tag "vote#{@i}", "yes"
+
+  - else
+    = image_tag "no.png"
+    欠席
+    = hidden_field_tag "vote#{@i}", "no"
+  = link_to "取消",{:action => "voting_ajax", :ident_num => @i, :vote => "reset"},:remote => true

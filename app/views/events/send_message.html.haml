@@ -1,0 +1,46 @@
+%ul.breadcrumb
+  %li
+    %a 1.タイトル/日程を決める
+  %li
+    %a 2.参加者を選ぶ
+  %li.current
+    %a 3.参加者へ知らせる
+  %li
+    %a 4.完了!! あとは待つだけ!!
+.grid_5
+  %h2 イベント詳細
+  - i = 0
+  - @schedules.each do |s|
+    .proposal-date-list
+      %b{:style => "padding:10px;"}
+        リスト
+        = i += 1
+      .cl
+      .grid_1.event-desc
+        提案日 :
+      .grid_3.event-desc
+        %b= s.proposal_time
+      .cl
+      .grid_1.event-desc
+        ランク :
+      .grid_3.event-desc
+        %b= EVENT_RANK[s.rank.to_i]
+      .cl
+    .cl
+  .hr
+  %h2 参加者
+  - @atnd_infos.each do |name,image|
+    .friends-list.defined
+      .friend-img
+        = image_tag(image)
+        .cl
+        = name
+
+.grid_6.send-message-btn
+  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=INVTはスケジュールを簡単に合わせることができるサービスです&link=http://localhost:3000/show?e=#{params[:e]}&redirect_uri=http://localhost:3000/",:target =>"_blank"
+
+  -# = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/feed?app_id=#{FACEBOOK_APP_ID}&redirect_uri=http://localhost:3000/detail",:target =>"_blank"
+.cl
+.right
+  %a.button.button-blue{:href => "/events/complete"}
+    %span 最後のステップへ

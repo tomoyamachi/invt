@@ -1,7 +1,11 @@
 Invt::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-
+  match "/terms" => "users#terms"
+  match "/privacy" => "users#privacy"
+  match "/help" => "users#_help"
+  match "/new" => "events#detail"
+  match "/show" => "events#show"
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -51,6 +55,7 @@ Invt::Application.routes.draw do
   root :to => "users#index"
 
   # See how all your routes lay out with "rake routes"
+  match "/events/detail" => "events#detail", :as => :detail_path
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

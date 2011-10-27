@@ -3,7 +3,7 @@ class CreateSchedules < ActiveRecord::Migration
   def self.up
     create_table :schedules do |t|
       t.integer :event_id
-      t.datetime :proposal_date
+      t.string :proposal_time
       t.integer :status
       # 1:まだ決まっていない、2:この日に決定した、3:だめだった
       t.integer :rank

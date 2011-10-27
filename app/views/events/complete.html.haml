@@ -1,1 +1,25 @@
-= link_to "test","http://www.facebook.com/dialog/send?app_id=170649486355496&name=People%20Argue%20Just%20to%20Win&link=http://www.invt.biz/2tml&redirect_uri=http://localhost:3000/detail&to=1383097228,527014793",:target =>"_blank"
+#fb-root
+:javascript
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=170649486355496";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+%ul.breadcrumb
+  %li
+    %a 1.タイトル/日程を決める
+  %li
+    %a 2.参加者を選ぶ
+  %li
+    %a 3.参加者へ知らせる
+  %li
+    %a 4.完了!! あとは待つだけ!!
+.complete
+  %h2 あとはみんなの投票を待ちましょう。
+  .fb-like{ "data-href" => "http://invt.biz", "data-send" => "true", "data-width" => "150", "data-show-faces" => "true", "data-layout" => "button_count"}
+  .cl
+  :erb
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="tomoyamachi" data-lang="ja">ツイート</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>

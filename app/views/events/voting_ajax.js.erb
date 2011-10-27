@@ -1,0 +1,6 @@
+$('#vote-btn<%= @i %>').html(
+  "<%= escape_javascript(render 'voted') %>"
+)
+$('#send-vote').html(
+  "<%= escape_javascript(render 'send_vote') %>"
+)

@@ -19,4 +19,16 @@ class User < ActiveRecord::Base
     end
     return user
   end
+
+  def self.find_own_events(user_id,num)
+    Event.find_all_by_host_user_id(user_id)
+    # p ue = UserEvent.find_all_by_user_id(user_id)
+    # events = []
+    # if ue
+    #   ue.each do |u|
+    #     events.push Event.find(u.event_id)
+    #   end
+    # end
+    # return events
+  end
 end

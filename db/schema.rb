@@ -10,15 +10,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019023918) do
+ActiveRecord::Schema.define(:version => 20111022160917) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
     t.string   "category"
     t.text     "note"
+    t.text     "place"
+    t.text     "result_date"
+    t.integer  "status"
     t.datetime "dead_line"
     t.integer  "open_flag"
-    t.integer  "user_id"
+    t.integer  "host_user_id",   :limit => 8
+    t.text     "host_user_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "proposal_time"
+    t.integer  "status"
+    t.integer  "rank"
+    t.text     "atnd_infos"
+    t.integer  "atnd_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_events", :force => true do |t|
+    t.integer  "user_id",    :limit => 8, :null => false
+    t.text     "user_name"
+    t.integer  "event_id",                :null => false
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,10 +53,9 @@ ActiveRecord::Schema.define(:version => 20111019023918) do
     t.string   "email"
     t.string   "image_url"
     t.integer  "first_event_id"
+    t.integer  "invited_num",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

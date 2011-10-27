@@ -1,4 +1,15 @@
-- form_tag(url_for(:action => "get_friends_ajax"),:remote => true) do
+.page-title
+  %h1 > 呼びたい友達を決めるページです
+%ul.breadcrumb
+  %li
+    %a 1.タイトル/日程を決める
+  %li.current
+    %a 2.参加者を選ぶ
+  %li
+    %a 3.参加者へ知らせる
+  %li
+    %a 4.完了!! あとは待つだけ!!
+- form_tag(url_for(:controller => "events",:action => "get_friends_ajax"),:remote => true) do
   - i = 0
   - @friends.each do |name,id_s,checked|
     - break if i == FRIENDS_PER_PAGE;i += 1
@@ -14,21 +25,24 @@
           .friend-img
             = link_to image_tag("http://graph.facebook.com/" + id_s + "/picture"),{:action => "add_friend_list_ajax",:id => id_s, :name => name, :defined_num => i},:remote => true
             .cl
-            = link_to name,{:action => "add_friend_list_ajax",:id => id_s,:name => name, :defined_num => i},:remote => true
+            = link_to name,{:controller => "events", :action => "add_friend_list_ajax",:id => id_s,:name => name, :defined_num => i},:remote => true
   .cl
   .submit-fomrs
     = hidden_field_tag "current_page",@current_friend_page
     = hidden_field_tag "defined_user_ids", @defined_user_ids.to_s
     = hidden_field_tag "defined_user_infos", @defined_user_infos.to_s
+    = hidden_field_tag "e", params[:e]
 
 
     - if @current_friend_page > 0
       .prev
-        = image_submit_tag("left_dark.png",:name => "prev")
-    .next
-      = image_submit_tag("right_dark.png",:name => "next", :value => "next")
+        = image_submit_tag("left_dark.png",:name => "prev",:value => "prev")
+    - if FRIENDS_PER_PAGE < @friends.size
+      .next
+        = image_submit_tag("right_dark.png",:name => "next", :value => "next")
+        次ページへ
     .cl
 
     .send
       %a.button.button-blue{:onclick => "formSubmit()"}
-        %span submit_me
+        %span 次のステップへ

@@ -1,0 +1,16 @@
+.page-title
+  %h1 > 呼びたい人の情報を取るためにログインが必要です
+%ul.breadcrumb
+  %li
+    %a 1.タイトル/日程を決める
+  %li.current
+    %a 2.参加者を選ぶ
+  %li
+    %a 3.参加者へ知らせる
+  %li
+    %a 4.完了!! あとは待つだけ!!
+
+
+.button-center
+  %a.button.button-blue{:href => "/auth/facebook?origin=%2F#{params[:controller]}%2F#{params[:action]}?e=#{params[:e]}"}
+    %span Facebookをつかってログイン

@@ -1,34 +1,42 @@
+.page-title
+  %h1 > 新規イベントを作成するページです
 %ul.breadcrumb
   %li.current
-    %a タイトル/日程を決める
+    %a 1.タイトル/日程を決める
   %li
-    %a 参加者を選ぶ
+    %a 2.参加者を選ぶ
   %li
-    %a 参加者へ知らせる
+    %a 3.参加者へ知らせる
   %li
-    %a 完了!! あとは待つだけ!!
-.grid_3
-  %h2 イベントタイトル
-  = text_field_tag :title, "title"
-  %h2 詳細/その他
-  = text_area_tag :note
-.grid_8{:style => "border-left:1px dashed #aaaaaa;margin:10px 0 0 20px;padding:0 0 0 20px;"}
-  %h2 どんな感じ??
-  - IVNT_TYPE.each do |c|
-    .grid_3.check
-      = radio_button_tag 'type', c
-      = c
-.cl
-.hr
-%h2 日時の詳細を入れる
-#add-wish-part
-  = render "wish_date",{:ident_num => "1"}
-  = render "wish_date",{:ident_num => "2"}
-#add-wish-button
-  .date-plan
-    .plus-circle
-      = link_to image_tag("/images/green-plus.png"),{:action => "add_wish_part_ajax",:wish_part_num => 3},:remote => true
+    %a 4.完了!! あとは待つだけ!!
+- form_tag(url_for(:controller => "events", :action => "get_event_info")) do
+  .grid_3
+    %h2 イベントタイトル
+    = text_field_tag :title
+    %h2 場所
+    = text_field_tag :place
+    %h2 詳細/その他
+    = text_area_tag :note
+  .grid_8{:style => "border-left:1px dashed #aaaaaa;margin:10px 0 0 20px;padding:0 0 0 20px;"}
+    %h2 どんな感じ??
+    - IVNT_TYPE.each do |c|
+      .grid_3.check
+        = radio_button_tag 'category', c
+        = c
+  .cl
+  .hr
+  %h2 日時の詳細を入れる
+  #add-wish-part
+    = render "events/wish_date",{:ident_num => "1"}
+    = render "events/wish_date",{:ident_num => "2"}
+    = render "events/wish_date",{:ident_num => "3"}
 
-.cl
-%a.button.button-blue
-  %span 次のステップへ
+  #add-wish-button
+    = hidden_field_tag "part_num", 3
+    .date-plan
+      .plus-circle
+        = link_to image_tag("/images/green-plus.png"),{:controller => "events", :action => "add_wish_part_ajax",:wish_part_num => 4},:remote => true
+  .cl
+  .right
+    %a.button.button-blue{:onclick => "formSubmit()"}
+      %span 次のステップへ

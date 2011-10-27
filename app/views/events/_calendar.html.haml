@@ -1,41 +1,42 @@
-- if !@t
-  - if params[:date] && params[:date] && params[:month]
-    - @t = Date.new(params[:year].to_i,params[:month].to_i,1)
-  - else
-    - @t = Date.today
-    - @this_month_flag = true
-  - @start_youbi = Date.new(@t.year, @t.month, 1).cwday % 7
-  - @max_day = (Date.new(@t.next_month.year, @t.next_month.month, 1) - 1).day
-%div{:id => "calendar#{ident_num}"}
-  .calendar-header
-    - if params[:date]
-      = @t.year.to_s + "/" + @t.month.to_s
+.calendar-wrapper
+  - if !@t
+    - if params[:date] && params[:date] && params[:month]
+      - @t = Date.new(params[:year].to_i,params[:month].to_i,1)
     - else
-      - unless @this_month_flag
-        = link_to "<<", {:action => "calendar_ajax", :month=>@t.prev_month.month, :year=>@t.prev_month.year, :ident_num => ident_num}, :remote => true
+      - @t = Date.today
+      - @this_month_flag = true
+    - @start_youbi = Date.new(@t.year, @t.month, 1).cwday % 7
+    - @max_day = (Date.new(@t.next_month.year, @t.next_month.month, 1) - 1).day
+  %div{:id => "calendar#{ident_num}"}
+    .calendar-header
+      - if params[:date]
+        = @t.year.to_s + "/" + @t.month.to_s
       - else
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      = @t.year.to_s + "/" + @t.month.to_s
-      = link_to ">>", {:action => "calendar_ajax", :month=>@t.next_month.month, :year=>@t.next_month.year,:ident_num => ident_num}, :remote => true
-  .calendar
-    %ul
-      %li.day.sun 日
-      %li.day 月
-      %li.day 火
-      %li.day 水
-      %li.day 木
-      %li.day 金
-      %li.day.sat 土
-      - @start_youbi.times do
-        %li.past-date
-      - (1..@max_day).each do |i|
-        - if !params[:date]
-          - if @this_month_flag && i < Date.today.day
-            %li.past-date= i
-          - else
-            %li.selectable-date= link_to i.to_s,{:action => "wish_date_ajax",:date => i, :month=>@t.month, :year=>@t.year,:ident_num => ident_num},:remote => true
+        - unless @this_month_flag
+          = link_to "<<", {:controller => "events", :action => "calendar_ajax", :month=>@t.prev_month.month, :year=>@t.prev_month.year, :ident_num => ident_num}, :remote => true
         - else
-          - unless i == params[:date].to_i
-            %li.past-date= i
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        = @t.year.to_s + "/" + @t.month.to_s
+        = link_to ">>", {:controller => "events", :action => "calendar_ajax", :month=>@t.next_month.month, :year=>@t.next_month.year,:ident_num => ident_num}, :remote => true
+    .calendar
+      %ul
+        %li.day.sun 日
+        %li.day 月
+        %li.day 火
+        %li.day 水
+        %li.day 木
+        %li.day 金
+        %li.day.sat 土
+        - @start_youbi.times do
+          %li.past-date
+        - (1..@max_day).each do |i|
+          - if !params[:date]
+            - if @this_month_flag && i < Date.today.day
+              %li.past-date= i
+            - else
+              %li.selectable-date= link_to i.to_s,{:controller => "events", :action => "wish_date_ajax",:date => i, :month=>@t.month, :year=>@t.year,:ident_num => ident_num},:remote => true
           - else
-            %li.selected= i
+            - unless i == params[:date].to_i
+              %li.past-date= i
+            - else
+              %li.selected= i

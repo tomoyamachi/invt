@@ -17,18 +17,32 @@
         予定合わせ支援サービス:INVT(インバイト)
       .signin
         - unless @user
-          = link_to image_tag("login.jpg"), "/auth/facebook"
+          = link_to image_tag("login.jpg"), "/auth/facebook?origin=%2F#{params[:controller]}%2F#{params[:action]}?e=#{params[:e]}"
+          or
+          = link_to "デモページを見る",:controller => "events",:action => "show", :e => Cipher.to_tiny(1)
+
+        - else
+          = @user.name + "(" + @user.invited_num.to_s + ")"
+          |
+          = link_to "新規イベントを追加",:controller => "events",:action => "detail"
 
       .cl
     .body-wrapper
+      - if flash[:notice]
+        .notice
+          = flash[:notice]
+      - if flash[:alert]
+        .alert
+          = flash[:alert]
       .contents= yield
-    .footer
-      = link_to "INVTについて"
-      \/
-      = link_to "使い方"
-      \/
-      = link_to "個人情報について"
-      \/
-      = link_to "開発者について"
-      \/
-      = link_to "ログアウト"
+    .footer.right
+      = link_to "INVTについて","/help"
+      |
+      = link_to "利用規約","/terms"
+      |
+      = link_to "個人情報について","/privacy"
+      |
+      = link_to "開発者について","http://simple-play.com"
+      - if @user
+        |
+        = link_to "ログアウト","/sessions/destroy"
