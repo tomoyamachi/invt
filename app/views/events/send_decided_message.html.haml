@@ -1,0 +1,17 @@
+.help
+  %h2
+    = @event.result_date
+    に決定しました
+  参加予定の方にメッセージを伝えましょう。
+.top-column
+  %h2
+    参加予定者
+  - @ues.each do |ue|
+    .friends-list.defined
+      .friend-img
+        = image_tag("http://graph.facebook.com/" + ue.user_id.to_s + "/picture")
+        %p= ue.user_name
+  .cl
+
+.help-link
+  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=スケジュールが決まりました!!&link=http://localhost:3000/show?e=#{params[:e]}",:target =>"_blank"

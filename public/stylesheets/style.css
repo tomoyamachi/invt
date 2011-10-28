@@ -396,6 +396,9 @@ button {
 
 .event-desc {
   float: left; }
+  .event-desc img {
+    width: 32px;
+    height: 32px; }
 
 .proposal-date-list {
   padding: 5px; }

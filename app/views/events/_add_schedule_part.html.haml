@@ -1,0 +1,11 @@
+#add-wish-part
+  = render "events/wish_date",{:ident_num => "1"}
+  = render "events/wish_date",{:ident_num => "2"}
+  = render "events/wish_date",{:ident_num => "3"}
+
+#add-wish-button
+  = hidden_field_tag "part_num", 3
+  .date-plan
+    .plus-circle
+      = link_to image_tag("/images/green-plus.png"),{:controller => "events", :action => "add_wish_part_ajax",:wish_part_num => 4},:remote => true
+.cl

@@ -1,2 +1,17 @@
-#friends-list
-  = render "friends_with_form"
+.page-title
+  %h1 > 呼びたい友達を決めるページです
+%ul.breadcrumb
+  %li
+    %a 1.タイトル/日程を決める
+  %li.current
+    %a 2.参加者を選ぶ
+  %li
+    %a 3.参加者へ知らせる
+  %li
+    %a 4.完了!! あとは待つだけ!!
+- form_tag(url_for(:controller => "events",:action => "get_friends_ajax"),:remote => true) do
+  #friends-list
+    = render "friends_with_form"
+  .send
+    %a.button.button-blue{:onclick => "formSubmit()"}
+      %span 次のステップへ

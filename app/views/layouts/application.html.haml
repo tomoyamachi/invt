@@ -22,8 +22,9 @@
           = link_to "デモページを見る",:controller => "events",:action => "show", :e => Cipher.to_tiny(1)
 
         - else
-          = @user.name + "(" + @user.invited_num.to_s + ")"
-          |
+          = @user.name + "("
+          = link_to  @user.invited_num.to_s,:action => "show_invited"
+          )|
           = link_to "新規イベントを追加",:controller => "events",:action => "detail"
 
       .cl
@@ -42,7 +43,7 @@
       |
       = link_to "個人情報について","/privacy"
       |
-      = link_to "開発者について","http://simple-play.com"
+      = link_to "開発者について","http://www.facebook.com/tomoyamachi",:target=>"_blank"
       - if @user
         |
         = link_to "ログアウト","/sessions/destroy"

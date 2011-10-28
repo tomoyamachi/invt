@@ -1,0 +1,6 @@
+.help
+  %h2 投票が完了しました!
+  = @event.host_user_name
+  さんにメッセージを伝えましょう。
+.help-link
+  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=INVTはスケジュールを簡単に合わせることができるサービスです&link=http://localhost:3000/show?e=#{params[:e]}&redirect_uri=http://localhost:3000&to=#{@event.host_user_id}",:target =>"_blank"

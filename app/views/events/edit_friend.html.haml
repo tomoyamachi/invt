@@ -1,0 +1,6 @@
+- form_tag(url_for(:controller => "events",:action => "get_friends_ajax"),:remote => true) do
+  #friends-list
+    = render "friends_with_form"
+  .send
+    %a.button.button-blue{:onclick => "formSubmit()"}
+      %span 次のステップへ

@@ -10,33 +10,10 @@
   %li
     %a 4.完了!! あとは待つだけ!!
 - form_tag(url_for(:controller => "events", :action => "get_event_info")) do
-  .grid_3
-    %h2 イベントタイトル
-    = text_field_tag :title
-    %h2 場所
-    = text_field_tag :place
-    %h2 詳細/その他
-    = text_area_tag :note
-  .grid_8{:style => "border-left:1px dashed #aaaaaa;margin:10px 0 0 20px;padding:0 0 0 20px;"}
-    %h2 どんな感じ??
-    - IVNT_TYPE.each do |c|
-      .grid_3.check
-        = radio_button_tag 'category', c
-        = c
-  .cl
+  = render "events/detail_edit"
   .hr
   %h2 日時の詳細を入れる
-  #add-wish-part
-    = render "events/wish_date",{:ident_num => "1"}
-    = render "events/wish_date",{:ident_num => "2"}
-    = render "events/wish_date",{:ident_num => "3"}
-
-  #add-wish-button
-    = hidden_field_tag "part_num", 3
-    .date-plan
-      .plus-circle
-        = link_to image_tag("/images/green-plus.png"),{:controller => "events", :action => "add_wish_part_ajax",:wish_part_num => 4},:remote => true
-  .cl
+  = render "events/add_schedule_part"
   .right
     %a.button.button-blue{:onclick => "formSubmit()"}
       %span 次のステップへ

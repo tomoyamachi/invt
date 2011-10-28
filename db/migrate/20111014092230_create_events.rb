@@ -9,10 +9,10 @@ class CreateEvents < ActiveRecord::Migration
       t.text :category
       t.text :result_date
       # 0:未決定、1:決定済み、3:終了
-      t.integer :status
+      t.integer :status, :default => 0
       t.datetime :dead_line
       # 0:非公開、1:公開
-      t.integer :open_flag
+      t.integer :open_flag, :default => 0
       t.integer :host_user_id
       t.text :host_user_name
       t.timestamps

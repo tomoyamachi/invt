@@ -5,8 +5,8 @@ class CreateUserEvents < ActiveRecord::Migration
       t.integer :user_id, :null => false
       t.text :user_name
       t.integer :event_id, :null => false
-      t.integer :status
-    #1:未確認、2:確認済み
+      t.integer :status,:default => 0
+    #0:未確認、1:確認済み
       t.timestamps
     end
     change_column :user_events, :user_id, :bigint

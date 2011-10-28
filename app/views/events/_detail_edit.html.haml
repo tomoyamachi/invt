@@ -1,0 +1,14 @@
+.grid_3
+  %h2 イベントタイトル
+  = text_field_tag :title,@title
+  %h2 場所
+  = text_field_tag :place,@place
+  %h2 詳細/その他
+  = text_area_tag :note,@note
+.grid_8{:style => "border-left:1px dashed #aaaaaa;margin:10px 0 0 20px;padding:0 0 0 20px;"}
+  %h2 どんな感じ??
+  - IVNT_TYPE.each do |c|
+    .grid_3.check
+      = radio_button_tag 'category', c
+      = c
+.cl

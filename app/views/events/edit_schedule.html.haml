@@ -1,0 +1,31 @@
+- form_tag(url_for(:controller => "events", :action => "update_schedule")) do
+  - i = 0
+  - @schedules.each do |s|
+    .top-column
+      %b{:style => "padding:10px;"}
+        リスト
+        = i += 1
+      .cl
+      .grid_1.event-desc
+        提案日
+        %br
+        ランク
+      .grid_3.event-desc
+        %b= s.proposal_time
+        %br
+        %b= EVENT_RANK[s.rank.to_i]
+      .grid_3.event-desc
+        = check_box_tag "delete#{i}",s.id
+        この日程を削除する
+      .grid_3.event-desc
+        = check_box_tag "decide",s.id
+        この日程に決定する
+    .cl
+    .hr
+  = hidden_field_tag "schedules_num", i
+  = hidden_field_tag "from", params[:from]
+  = hidden_field_tag "e", params[:e]
+  = render "add_schedule_part"
+  .right
+    %a.button.button-blue{:onclick => "formSubmit()"}
+      %span 上書きする

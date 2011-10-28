@@ -1,0 +1,7 @@
+- form_tag(url_for(:controller => "events", :action => "update_detail")) do
+  = render "detail_edit"
+  = hidden_field_tag "from", params[:from]
+  = hidden_field_tag "e", params[:e]
+  .right
+    %a.button.button-blue{:onclick => "formSubmit()"}
+      %span 上書きする

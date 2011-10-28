@@ -1,0 +1,54 @@
+.grid_5.show-event
+  .top-column
+    %h2= @event.title
+  .top-column
+    .grid_1.event-desc
+      開催日
+      %br
+      場所
+      %br
+      詳細
+    .grid_3.event-desc
+      %b= @event.result_date
+      %br
+      %b= @event.place
+      %br
+      %b= simple_format @event.note
+    .cl
+    - if @host_flag
+      .right
+        = link_to ">> 編集する", :action => "edit_event_detail", :from => "show", :e => params[:e]
+      .cl
+  .top-column
+    %h2
+      イベントを作成したユーザ
+      .self-img
+        = image_tag("http://graph.facebook.com/" + @event.host_user_id.to_s + "/picture")
+        = @event.host_user_name
+  .top-column
+    = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=スケジュールが決まりました!!&link=http://localhost:3000/show?e=#{params[:e]}",:target =>"_blank"
+
+.grid_6.show-event
+  .top-column
+    %h2
+      参加予定者
+    - if @schedule.atnd_infos.size > 2
+      - instance_eval(@schedule.atnd_infos).each do |info|
+        .friends-list.defined
+          .friend-img
+            = image_tag("http://graph.facebook.com/" + info[0].to_s + "/picture")
+            %p= info[1]
+
+  .top-column
+    %h2
+      呼ばれているユーザー一覧
+    - @ues.each do |ue|
+      .friends-list.defined
+        .friend-img
+          = image_tag("http://graph.facebook.com/" + ue.user_id.to_s + "/picture")
+          %p= ue.user_name
+    .cl
+    - if @host_flag
+      .right
+        = link_to ">> 編集する", :action => "edit_friend", :from => "show", :e => params[:e]
+      .cl

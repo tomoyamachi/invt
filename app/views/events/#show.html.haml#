@@ -12,6 +12,7 @@
       詳細
     .grid_3.event-desc
       %b= EVENT_STATUS[@event.status]
+      
       %br
       -# - if @event.dead_line
       -#   %b= @event.dead_line

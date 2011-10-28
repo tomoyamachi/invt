@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20111022160917) do
     t.text     "note"
     t.text     "place"
     t.text     "result_date"
-    t.integer  "status"
+    t.integer  "status",                      :default => 0
     t.datetime "dead_line"
-    t.integer  "open_flag"
+    t.integer  "open_flag",                   :default => 0
     t.integer  "host_user_id",   :limit => 8
     t.text     "host_user_name"
     t.datetime "created_at"
@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(:version => 20111022160917) do
   create_table "schedules", :force => true do |t|
     t.integer  "event_id"
     t.string   "proposal_time"
-    t.integer  "status"
-    t.integer  "rank"
+    t.integer  "status",        :default => 0
+    t.integer  "rank",          :default => 0
     t.text     "atnd_infos"
-    t.integer  "atnd_num"
+    t.integer  "atnd_num",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_events", :force => true do |t|
-    t.integer  "user_id",    :limit => 8, :null => false
+    t.integer  "user_id",    :limit => 8,                :null => false
     t.text     "user_name"
-    t.integer  "event_id",                :null => false
-    t.integer  "status"
+    t.integer  "event_id",                               :null => false
+    t.integer  "status",                  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

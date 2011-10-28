@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     end
   end
   def show_invited
-    UserEvent.find_events_from_user_id(@user.id)
+    @events = UserEvent.find_events_from_user_id(@user.id)
+    @invited_flag = true
+    render "index"
   end
 end
 
