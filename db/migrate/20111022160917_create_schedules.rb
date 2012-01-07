@@ -9,6 +9,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.integer :rank, :default => 0
       #1:この日がいい。2:あんまり。。。
       t.text :atnd_infos
+      t.text :not_atnd_infos
       #[[atnder_id,atnder_name],..]の形式をテキストで保存
       t.integer :atnd_num, :default => 0
       t.timestamps

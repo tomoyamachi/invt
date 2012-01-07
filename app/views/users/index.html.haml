@@ -1,4 +1,10 @@
 - if @events.size > 0
+  .help
+    %h2
+      - if @invited_flag
+        招待されているイベント
+      - else
+        自分でつくったイベント
   - @events.each do |event|
     .grid_9.show-event
       .top-column
@@ -27,15 +33,16 @@
         .right
           = link_to ">> 詳細を見る", :controller => "events", :action => "show", :e => Cipher.to_tiny(event.id)
       .cl
+  - if @user.invited_num > 0
+    .grid_2.show-event
+      あたらしく招待されているイベントがあります
+      %br
+      = link_to "一覧を見る",:action => "show_invited"
+  .grid_2.show-event
+    - if @invited_flag
+      = link_to "トップに戻る",:action => "index"
+    - else
+      = link_to "誘われているイベントヘ",:action => "show_invited"
+
 - else
   = render "help"
-- if @user.invited_num > 0
-  .grid_2.show-event
-    あたらしく招待されているイベントがあります
-    %br
-    = link_to "一覧を見る",:action => "show_invited"
-.grid_2.show-event
-  - if @invited_flag
-    = link_to "トップに戻る",:action => "index"
-  - else
-    = link_to "誘われているイベントヘ",:action => "show_invited"

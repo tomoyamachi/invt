@@ -14,4 +14,5 @@
   .cl
 
 .help-link
-  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=スケジュールが決まりました!!&link=http://localhost:3000/show?e=#{params[:e]}",:target =>"_blank"
+  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=スケジュールが決定しました&link=#{SITE_URI}show?e=#{params[:e]}&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&description=#{DIALOG_DESCRIPTION}",:target => "_blank"
+

@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     event_id = Cipher.from_tiny(params[:e])
     event = Event.find(event_id)
     params_event_detail(event)
+    event.category if params[:category]
     event.save
     redirect_to :action => params[:from], :e => params[:e]
   end
@@ -70,14 +71,19 @@ class EventsController < ApplicationController
 
   def vote_this_date
     for i in 1..params[:schedule_size].to_i
-      if params["vote#{i}"] == "yes"
+      if params["vote#{i}"]
         if params["schedule_id#{i}"]
           schedule = Schedule.find(params["schedule_id#{i}"])
-          atnd_infos = schedule.atnd_infos
-          atnd_infos ||= "[]"
-          this_atnd_infos = instance_eval(atnd_infos).push([@user.id,@user.name])
-          schedule.atnd_infos = this_atnd_infos.to_s
-          schedule.atnd_num = this_atnd_infos.size
+          if params["vote#{i}"] == "yes"
+            atnd_infos = schedule.atnd_infos
+            this_atnd_infos = instance_eval(atnd_infos).push([@user.id,@user.name])
+            schedule.atnd_infos = this_atnd_infos.to_s
+            schedule.atnd_num = this_atnd_infos.size
+          else
+            not_atnd_infos = schedule.not_atnd_infos
+            this_not_atnd_infos = instance_eval(not_atnd_infos).push([@user.id,@user.name])
+            schedule.not_atnd_infos = this_not_atnd_infos.to_s
+          end
           schedule.save
           @flag = true
         end
@@ -129,6 +135,7 @@ class EventsController < ApplicationController
           # save new Event
           @event = Event.new
           params_event_detail(@event)
+          @event.category = params[:category]
           # ユーザがまだfacebook loginしてないときは、friends_listで上書き
           if @user
             @event.host_user_id = @user.id
@@ -239,7 +246,6 @@ class EventsController < ApplicationController
     event.title = params[:title]
     event.place = params[:place]
     event.note = params[:note]
-    event.category = params[:category]
   end
 
   def connect_facebook_friends(page = 0,defined_user_ids = [])

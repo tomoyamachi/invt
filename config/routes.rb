@@ -6,6 +6,7 @@ Invt::Application.routes.draw do
   match "/help" => "users#_help"
   match "/new" => "events#detail"
   match "/show" => "events#show"
+  match "/show_invited" => "users#show_invited"
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

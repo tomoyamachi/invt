@@ -14,6 +14,7 @@ class Schedule < ActiveRecord::Base
     s = Schedule.new
     s.proposal_time = date
     s.atnd_infos ||= "[]"
+    s.not_atnd_infos ||= "[]"
     s.atnd_num = 0
     s.status = 0
     return s

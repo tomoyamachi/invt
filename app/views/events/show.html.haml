@@ -5,19 +5,16 @@
     .grid_1.event-desc
       状態
       %br
-      -# 締切り
-      -# %br
+      目的
+      %br
       場所
       %br
       詳細
     .grid_3.event-desc
       %b= EVENT_STATUS[@event.status]
       %br
-      -# - if @event.dead_line
-      -#   %b= @event.dead_line
-      -# - else
-      -#   %b 決まっていません
-      -# %br
+      %b= @event.category
+      %br
       %b= @event.place
       %br
       %b= simple_format @event.note
@@ -45,6 +42,9 @@
       .self-img
         = image_tag("http://graph.facebook.com/" + @event.host_user_id.to_s + "/picture")
         = @event.host_user_name
+
+      = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=スケジュール調整について&link=#{SITE_URI}show?e=#{params[:e]}&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&description=#{DIALOG_DESCRIPTION}",:target => "_blank"
+
 .grid_6.show-event
   - form_tag(url_for(:controller => "events", :action => "vote_this_date")) do
     - i = 0
@@ -64,22 +64,14 @@
             %br
             ランク
             %br
-            -# 状態
-            -# %br
-            投票数
+            出席数
           .grid_3.event-desc
             %b= s.proposal_time
             %br
             %b= EVENT_RANK[s.rank]
             %br
-            -# %b= SCHEDULE_STATUS[s.status]
-            -# %br
             %b= s.atnd_num.to_s + "票"
             -# atnd_infosが"[]"じゃなかったら、atnd_infosは空ではないと予想
-            - if s.atnd_infos.size > 2
-              %br
-              - instance_eval(s.atnd_infos).each do |info|
-                = image_tag("http://graph.facebook.com/" + info[0].to_s + "/picture")
           - if !@user
             .grid_1.cant-vote
               = link_to image_tag("fb.jpg"),"/auth/facebook?origin=%2F#{params[:controller]}%2F#{params[:action]}?e=#{params[:e]}"
@@ -99,11 +91,28 @@
               削除/追加/日時の決定は下リンクからできます
           - else
             .grid_1.cant-vote
-              あなたは投票権がありません...
+              = link_to "参加させてもらう!","http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=#{@user.name}さんがあなたのスケジュールに興味があるようです&link=#{SITE_URI}show?e=#{params[:e]}&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&description=イベントの編集をして、#{@user.name}さんを参加可能にしてあげてください&to=#{@event.host_user_id}",:target => "_blank"
           .cl
+
+          - if s.atnd_infos.size > 2
+            .grid_1.event-desc.vote-img
+              :erb
+                出席<%= image_tag "yes.png" %>
+            .grid_4.event-desc
+              - instance_eval(s.atnd_infos).each do |info|
+                = image_tag("http://graph.facebook.com/" + info[0].to_s + "/picture")
+            .cl
+          - if s.not_atnd_infos.size > 2
+            .grid_1.event-desc.vote-img
+              :erb
+                欠席<%= image_tag "no.png" %>
+            .grid_4.event-desc
+              - instance_eval(s.not_atnd_infos).each do |info|
+                = image_tag("http://graph.facebook.com/" + info[0].to_s + "/picture")
+            .cl
     - if @host_flag
       .right
         = link_to ">> 編集する", :action => "edit_schedule", :from => "show", :e => params[:e]
       .cl
-
+    - else
       #send-vote

@@ -3,4 +3,4 @@
   = @event.host_user_name
   さんにメッセージを伝えましょう。
 .help-link
-  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=INVTはスケジュールを簡単に合わせることができるサービスです&link=http://localhost:3000/show?e=#{params[:e]}&redirect_uri=http://localhost:3000&to=#{@event.host_user_id}",:target =>"_blank"
+  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=#{@event.host_user_name}さんのスケジュールに投票しました&link=#{SITE_URI}show?e=#{params[:e]}&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&description=#{DIALOG_DESCRIPTION}&to=#{@event.host_user_id}",:target => "_blank"

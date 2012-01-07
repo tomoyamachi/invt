@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(:version => 20111022160917) do
   create_table "schedules", :force => true do |t|
     t.integer  "event_id"
     t.string   "proposal_time"
-    t.integer  "status",        :default => 0
-    t.integer  "rank",          :default => 0
+    t.integer  "status",         :default => 0
+    t.integer  "rank",           :default => 0
     t.text     "atnd_infos"
-    t.integer  "atnd_num",      :default => 0
+    t.text     "not_atnd_infos"
+    t.integer  "atnd_num",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

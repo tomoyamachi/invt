@@ -5,13 +5,13 @@
     %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=utf-8'}
     %meta{ 'property' => 'og:site_name', :content => 'invt' }
     %meta{ 'name' => 'description', :content => 'INVT' }
-    %title Life
+    %title スケジュール調整支援ツール インバイト:INVT
     = stylesheet_link_tag :all, :media => 'screen,projection'
     = javascript_include_tag :all
-    %link{ :rel => 'shortcut icon', :media => 'image/x-icon', :href => '/images/life.ico' }
+    %link{ :rel => 'shortcut icon', :media => 'image/x-icon', :href => '/images/favi.ico' }
   %body.container_12
     .header
-      .logo.grid_3
+      .logo.grid_2
         %h1= link_to 'INVT','/'
       .desc.grid_4
         予定合わせ支援サービス:INVT(インバイト)
@@ -22,9 +22,12 @@
           = link_to "デモページを見る",:controller => "events",:action => "show", :e => Cipher.to_tiny(1)
 
         - else
-          = @user.name + "("
-          = link_to  @user.invited_num.to_s,:action => "show_invited"
-          )|
+          = @user.name
+          :erb
+            | 招待されているイベント(<%= link_to  @user.invited_num.to_s,"/show_invited" %>)
+          |
+          = link_to "トップ","/"
+          |
           = link_to "新規イベントを追加",:controller => "events",:action => "detail"
 
       .cl
@@ -44,6 +47,8 @@
       = link_to "個人情報について","/privacy"
       |
       = link_to "開発者について","http://www.facebook.com/tomoyamachi",:target=>"_blank"
+      |
+      = link_to "意見/質問/エラー報告等","http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=INVTについて&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&to=1383097228&description=エラー報告の場合、エラーが発生した状況を、できるかぎり詳しくお聞かせください。",:target => "_blank"
       - if @user
         |
         = link_to "ログアウト","/sessions/destroy"

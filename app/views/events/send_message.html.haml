@@ -15,7 +15,7 @@
       %br
       状態
       %br
-      締切り
+      目的
       %br
       場所
       %br
@@ -25,10 +25,7 @@
       %br
       %b= EVENT_STATUS[@event.status]
       %br
-      - if @event.dead_line
-        %b= @event.dead_line
-      - else
-        %b 決まっていません
+      %b= @event.category
       %br
       %b= @event.place
       %br
@@ -68,11 +65,12 @@
   .cl
   .right
     = link_to ">> 編集する", :action => "edit_friend", :from => "send_message", :e => params[:e]
+  .cl
+.grid_6
+  .send-message-btn
+    = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=#{@user.name}さんからスケジュール調整の申請があります&link=#{SITE_URI}show?e=#{params[:e]}&redirect_uri=#{SITE_URI + params[:controller]}/#{params[:action]}?e=#{params[:e]}&picture=#{DIALOG_PICTURE_URI}&description=#{DIALOG_DESCRIPTION}",:target => "_blank"
 
-.grid_6.send-message-btn
-  = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/send?app_id=#{FACEBOOK_APP_ID}&name=INVTはスケジュールを簡単に合わせることができるサービスです&link=http://localhost:3000/show?e=#{params[:e]}&redirect_uri=http://localhost:3000/",:target =>"_blank"
-
-  -# = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/feed?app_id=#{FACEBOOK_APP_ID}&redirect_uri=http://localhost:3000/detail",:target =>"_blank"
+  -# = link_to image_tag("send.jpg"),"http://www.facebook.com/dialog/feed?app_id=#{FACEBOOK_APP_ID}",:target =>"_blank"
 .cl
 .right
   %a.button.button-blue{:href => "/events/complete"}
