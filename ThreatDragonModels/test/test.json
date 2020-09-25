@@ -1,9 +1,21 @@
 {
   "summary": {
-    "title": "test"
+    "title": "test",
+    "owner": "t",
+    "description": "a"
   },
   "detail": {
-    "contributors": [],
-    "diagrams": []
+    "contributors": [
+      {
+        "name": "tomoyamachi"
+      }
+    ],
+    "diagrams": [
+      {
+        "title": "aaaa",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ]
   }
 }
